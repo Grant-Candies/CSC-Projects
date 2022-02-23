@@ -1,8 +1,8 @@
 const sounds = new Tone.Players({
-  yuh : "media/YUH.mp3",
-  life : "media/life.mp3",
-  coin : "media/coin.mp3",
-  pause : "media/pause.mp3"
+  yuh : "media/YUH.wav",
+  life : "media/life.wav",
+  coin : "media/coin.wav",
+  pause : "media/pause.wav"
 })
 
 let button1;
