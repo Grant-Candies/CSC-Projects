@@ -1,8 +1,8 @@
-let sounds = new Tone.Players({
-  'yuh' : 'media/YUH.mp3',
-  'life' : 'media/life.mp3',
-  'coin' : 'media/coin.mp3',
-  'pause' : 'media/pause.mp3'
+const sounds = new Tone.Players({
+  yuh : "media/YUH.mp3",
+  life : "media/life.mp3",
+  coin : "media/coin.mp3",
+  pause : "media/pause.mp3"
 })
 
 let button1;
@@ -19,19 +19,19 @@ function setup() {
   delay.toDestination();
 
   button1 = createButton('yuh');
-  button1.position(50,200);
+  button1.position(20,200);
   button1.mousePressed(  () => playSound('yuh')  );
 
   button2 = createButton('life');
-  button2.position(150,200);
+  button2.position(120,200);
   button2.mousePressed(  () => playSound('life')  );
 
   button3 = createButton('coin');
-  button3.position(250,200);
+  button3.position(220,200);
   button3.mousePressed(  () => playSound('coin')  );
 
   button4 = createButton('pause');
-  button4.position(350,200);
+  button4.position(320,200);
   button4.mousePressed(  () => playSound('pause')  );
 
   slider = createSlider(0., 1., 0.5, 0.1);
