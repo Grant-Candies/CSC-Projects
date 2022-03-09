@@ -12,14 +12,22 @@ osc.connect(ampEnv);
 let coyote;
 
 function preload() {
-  coyote = loadImage('media/coyote.jpg');
+  coyote = loadImage('coyote.jpg');
 }
 
 let boom = new Tone.Noise('white').start();
+let boomEnv = new Tone.AmplitudeEnvelope({
+  attack: 0.1,
+  decay: 0.2,
+  sustain: 1.0,
+  release: 0.8
+}).connect(gain);
+let boomFilter = new Tone.Filter(800,'lowpass').connect(boomEnv)
+boom.connect(boomFilter);
 
 function setup() {
   createCanvas(800, 800);
-  image(coyote);
+  imageMode(CENTER);
 }
 
 function draw() {
@@ -27,7 +35,8 @@ function draw() {
 }
 
 function mousePressed() {
+  image(coyote, 400, 400)
   ampEnv.triggerAttackRelease(1.5)
   osc.frequency.linearRampTo(300,'+1.5');
-  boom.triggerAttackRelease(0.5,'+1.51');
+  boomEnv.triggerAttackRelease(0.5,'+1.51');
 }
