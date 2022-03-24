@@ -1,14 +1,3 @@
-let osc = new Tone.AMOscillator(800,'sine','sine').start()
-let gain = new Tone.Gain().toDestination();
-let pan = new Tone.Panner().connect(gain);
-let ampEnv = new Tone.AmplitudeEnvelope({
-  attack: 0.1,
-  decay: 0.2,
-  sustain: 1.0,
-  release: 0.8
-}).connect(pan);
-osc.connect(ampEnv);
-
 let synth = new Tone.Synth().toDestination();
 
 let backgroundMusic = new Tone.Pattern(function(time, note){
@@ -27,7 +16,7 @@ let boomEnv = new Tone.AmplitudeEnvelope({
   decay: 0.2,
   sustain: 1.0,
   release: 0.8
-}).connect(gain);
+}).toDestination();
 let boomFilter = new Tone.Filter(800,'lowpass').connect(boomEnv)
 boom.connect(boomFilter);
 
@@ -38,7 +27,7 @@ function setup() {
   g = 0;
   b = 0;
 
-  console.log('IGNITION IS GO')
+  // console.log('IGNITION IS GO')
 
   button1 = createButton('reset');
   button1.position(50,700);
@@ -157,7 +146,7 @@ function mousePressed() {
     noStroke();
     fill(r, g, b);
     circle(mouseX, mouseY, 20, 20);
-    console.log("PAINT IS GO")    
+    // console.log("PAINT IS GO")    
     Tone.start();
     backgroundMusic.start(0);
     Tone.Transport.start();
@@ -169,7 +158,7 @@ function mouseDragged() {
   fill(r, g, b)
   circle(mouseX, mouseY, 20, 20);
   boomEnv.triggerAttackRelease(0.2);
-  console.log("DRAG IS GO")
+  // console.log("PAINT IS GO")
 }
 
 function reset() {
