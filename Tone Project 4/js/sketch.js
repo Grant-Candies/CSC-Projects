@@ -77,63 +77,85 @@ function draw() {
 function mousePressed() {
   console.log('ZORD ONLINE')
   if ((mouseX > 50 && mouseX < 101) && (mouseY > 50 && mouseY <101)) {
-    c = color(250, 0, 0);
+    r = 250;
+    g = 0;
+    b = 0;
     synth.triggerAttackRelease("A2", 0.1);
     console.log("RED IS GO")
   }
   else if ((mouseX > 50 && mouseX < 101) && (mouseY > 100 && mouseY <151)) {
-    c = color(252, 157, 3);
+    r = 252;
+    g = 157;
+    b = 3;
     synth.triggerAttackRelease("B2", 0.1);
     console.log("ORANGE IS GO")
   }
   else if ((mouseX > 50 && mouseX < 101) && (mouseY > 150 && mouseY <201)) {
-    c = color(255, 247, 0);
+    r = 255;
+    g = 247;
+    b = 0;
     synth.triggerAttackRelease("C2", 0.1);
     console.log("YELLOW IS GO")
   }
   else if ((mouseX > 50 && mouseX < 101) && (mouseY > 200 && mouseY <251)) {
-    c = color(0, 250, 0);
+    r = 0;
+    g = 250;
+    b = 0;
     synth.triggerAttackRelease("D2", 0.1);
     console.log("GREEN IS GO")
   }
   else if ((mouseX > 50 && mouseX < 101) && (mouseY > 250 && mouseY <301)) {
-    c = color(0, 255, 162);
+    r = 0;
+    g = 255;
+    b = 162;
     synth.triggerAttackRelease("E2", 0.1);
     console.log("CYAN IS GO")
   }
   else if ((mouseX > 50 && mouseX < 101) && (mouseY > 300 && mouseY <351)) {
-    c = color(0, 255, 255);
+    r = 0;
+    g = 255;
+    b = 255;
     synth.triggerAttackRelease("F2", 0.1);
     console.log("AQUA IS GO")
   }
   else if ((mouseX > 50 && mouseX < 101) && (mouseY > 350 && mouseY <401)) {
-    c = color(0, 0, 250);
+    r = 0;
+    g = 0;
+    b = 250;
     synth.triggerAttackRelease("G2", 0.1);
     console.log("BLUE IS GO")
   }
   else if ((mouseX > 50 && mouseX < 101) && (mouseY > 400 && mouseY <451)) {
-    c = color(250, 0, 250);
+    r = 250;
+    g = 0;
+    b = 250;
     synth.triggerAttackRelease("A3", 0.1);
     console.log("PURPLE IS GO")
   }
   else if ((mouseX > 50 && mouseX < 101) && (mouseY > 450 && mouseY <501)) {
-    c = color(100, 50, 0);
+    r = 100;
+    g = 50;
+    b = 0;
     synth.triggerAttackRelease("B3", 0.1);
     console.log("BROWN IS GO")
   }
   else if ((mouseX > 50 && mouseX < 101) && (mouseY > 500 && mouseY <551)) {
-    c = color(250, 250, 250);
+    r = 250;
+    g = 250;
+    b = 250;
     synth.triggerAttackRelease("C3", 0.1);
     console.log("WHITE IS GO")
   }
   else if ((mouseX > 50 && mouseX < 101) && (mouseY > 550 && mouseY <601)) {
-    c = color(0, 0, 0);
+    r = 0;
+    g = 0;
+    b = 0;
     synth.triggerAttackRelease("D3", 0.1);
     console.log("BLACK IS GO")
   }
   else {
     noStroke();
-    fill(c);
+    fill(r, g, b);
     circle(mouseX, mouseY, 20, 20);
     console.log("PAINT IS GO")    
     Tone.start();
@@ -144,7 +166,7 @@ function mousePressed() {
 
 function mouseDragged() {
   noStroke();
-  fill(c)
+  fill(r, g, b)
   circle(mouseX, mouseY, 20, 20);
   boomEnv.triggerAttackRelease(0.2);
   console.log("DRAG IS GO")
