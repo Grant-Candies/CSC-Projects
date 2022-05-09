@@ -3,31 +3,48 @@
 let serialPDM;
 let portName = "COM3";
 
+let sensors;
+
+const chorus = new Tone.Chorus(4, 2.5, 0.5).toDestination().start();
+const synth = new Tone.DuoSynth().connect(chorus);
+
+let notes = {
+  'q': 'C4',
+  'w': 'D4',
+  'e': 'E4',
+  'r': 'F4',
+  't': 'G4',
+  'y': 'A4',
+  'u': 'B4'
+}
+
 let r;
 let g;
 let b;
 
-let keyA;
-let keyB;
 let keyC;
 let keyD;
 let keyE;
 let keyF;
 let keyG;
+let keyA;
+let keyB;
 
 let button1;
 let button2;
 
 function setup() {
   serialPDM = new PDMSerial(portName);
-  keyA = serialPDM.aPin;
-  keyB = serialPDM.bPin;
   keyC = serialPDM.cPin;
   keyD = serialPDM.dPin;
   keyE = serialPDM.ePin;
   keyF = serialPDM.fPin;
   keyG = serialPDM.gPin;
+  keyA = serialPDM.aPin;
+  keyB = serialPDM.bPin;
   console.log(serialPDM.inData);
+
+  sensors = serialPDM.sensorData;
 
   r = 0;
   g = 0;
@@ -49,75 +66,84 @@ function draw() {
   circle([sensor.a0,50,50]);
 }
 
-function redA() {
+function redC() {
   r = 250;
   g = 0;
   b = 0;
   noStroke();
   fill(r,g,b);
   circle(random(1200),random(1200),30);
+  synth.triggerAttackRelease("C3", 0.25);
 }
 
-function orangeB() {
+function orangeD() {
   r = 250;
   g = 137;
   b = 0;
   noStroke();
   fill(r,g,b);
   circle(random(1200),random(1200),30);
+  synth.triggerAttackRelease("D3", 0.25);
 }
 
-function yellowC() {
+function yellowE() {
   r = 250;
   g = 250;
   b = 0;
   noStroke();
   fill(r,g,b);
   circle(random(1200),random(1200),30);
+  synth.triggerAttackRelease("E3", 0.25);
 }
 
-function greenD() {
+function greenF() {
   r = 0;
   g = 250;
   b = 0;
   noStroke();
   fill(r,g,b);
   circle(random(1200),random(1200),30);
+  synth.triggerAttackRelease("F3", 0.25);
 }
 
-function blueE() {
+function blueG() {
   r = 0;
   g = 0;
   b = 250;
   noStroke();
   fill(r,g,b);
   circle(random(1200),random(1200),30);
+  synth.triggerAttackRelease("G3", 0.25);
 }
 
-function purpleF() {
+function purpleA() {
   r = 250;
   g = 0;
   b = 250;
   noStroke();
   fill(r,g,b);
   circle(random(1200),random(1200),30);
+  synth.triggerAttackRelease("A3", 0.25);
 }
 
-function whiteG() {
+function whiteB() {
   r = 250;
   g = 250;
   b = 250;
   noStroke();
   fill(r,g,b);
   circle(random(1200),random(1200),30);
+  synth.triggerAttackRelease("B3", 0.25);
 }
 
 function lightOn() {
+  chorus.feedback.value = 0.5;
   serialPDM.transmit('on');
   console.log("ON");
 }
 
 function lightOff() {
+  chorus.feedback.value = 0;
   serialPDM.transmit('off');
   console.log("OFF");
 }
