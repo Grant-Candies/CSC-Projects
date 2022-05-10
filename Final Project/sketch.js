@@ -8,16 +8,6 @@ let sensors;
 const chorus = new Tone.Chorus(4, 2.5, 0.5).toDestination().start();
 const synth = new Tone.DuoSynth().connect(chorus);
 
-let notes = {
-  'q': 'C4',
-  'w': 'D4',
-  'e': 'E4',
-  'r': 'F4',
-  't': 'G4',
-  'y': 'A4',
-  'u': 'B4'
-}
-
 let r;
 let g;
 let b;
@@ -29,6 +19,8 @@ let keyF;
 let keyG;
 let keyA;
 let keyB;
+
+let splotchSize;
 
 let button1;
 let button2;
@@ -49,6 +41,8 @@ function setup() {
   r = 0;
   g = 0;
   b = 0;
+
+  splotchSize = 30;
   
   createCanvas(1200, 1200);
   
@@ -63,7 +57,34 @@ function setup() {
 
 function draw() {
   background(255);
-  circle([sensor.a0,50,50]);
+
+  if (sensors.p13 == 0){
+    redC();
+  }
+  
+  if (sensors.p12 == 0){
+    orangeD();
+  }
+
+  if (sensors.p10 == 0){
+    yellowE();
+  }
+
+  if (sensors.p9 == 0){
+    greenF();
+  }
+
+  if (sensors.p7 == 0){
+    blueG();
+  }
+
+  if (sensors.p6 == 0){
+    purpleA();
+  }
+
+  if (sensors.p4 == 0){
+    whiteB();
+  }
 }
 
 function redC() {
@@ -74,6 +95,7 @@ function redC() {
   fill(r,g,b);
   circle(random(1200),random(1200),30);
   synth.triggerAttackRelease("C3", 0.25);
+  console.log("RED");
 }
 
 function orangeD() {
@@ -84,6 +106,7 @@ function orangeD() {
   fill(r,g,b);
   circle(random(1200),random(1200),30);
   synth.triggerAttackRelease("D3", 0.25);
+  console.log("ORANGE");
 }
 
 function yellowE() {
@@ -94,6 +117,7 @@ function yellowE() {
   fill(r,g,b);
   circle(random(1200),random(1200),30);
   synth.triggerAttackRelease("E3", 0.25);
+  console.log("YELLOW");
 }
 
 function greenF() {
@@ -104,6 +128,7 @@ function greenF() {
   fill(r,g,b);
   circle(random(1200),random(1200),30);
   synth.triggerAttackRelease("F3", 0.25);
+  console.log("GREEN");
 }
 
 function blueG() {
@@ -114,6 +139,7 @@ function blueG() {
   fill(r,g,b);
   circle(random(1200),random(1200),30);
   synth.triggerAttackRelease("G3", 0.25);
+  console.log("BLUE");
 }
 
 function purpleA() {
@@ -124,6 +150,7 @@ function purpleA() {
   fill(r,g,b);
   circle(random(1200),random(1200),30);
   synth.triggerAttackRelease("A3", 0.25);
+  console.log("PURPLE");
 }
 
 function whiteB() {
@@ -134,6 +161,11 @@ function whiteB() {
   fill(r,g,b);
   circle(random(1200),random(1200),30);
   synth.triggerAttackRelease("B3", 0.25);
+  console.log("WHITE");
+}
+
+function keyPressed() {
+  console.log(serialPDM.sensorsConnected());
 }
 
 function lightOn() {
