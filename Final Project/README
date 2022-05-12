@@ -1,0 +1,11 @@
+Addtitional README if you don't want to download the .docx
+
+The goal of this project was to use an Arduino module to create an interactive keyboard that could be used to play simple music and create visual art in realtime via P5. 
+The physical components of the project consist of a board with seven colored buttons functioning as the “keys” of the “keyboard”. Each button is assigned to a note 
+(C3 through B3) and a color (I had originally planned for ROYGBIV, but found out that the pack of buttons I had bought only had 6 colors, so I opted to substitute violet 
+for white). The ARDUINO code picks up the button presses and converts them to signals via PDMSerial before sending them to P5. It is also set up to turn on an LED when 
+overdrive is toggled on the P5 side. In P5, the signal from each button press is picked up and triggers the note associated with that button, a splotch of paint of the 
+corresponding color, and a size based on the presence or absence of overdrive. Pictures of the physical setup, as well as both types of code used, can be found in the 
+respective folders in this repository. For an example video, follow the link below.
+
+https://youtube.com/shorts/eml9uYV4W9M
